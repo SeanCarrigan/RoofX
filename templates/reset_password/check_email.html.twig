@@ -1,0 +1,29 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Password Reset Email Sent{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22> 🏠️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    {% block style %}
+        {{ encore_entry_link_tags('style/reset') }}
+    {% endblock %}
+</head>
+
+{% block body %}
+    <div class="reset-container text-center">
+        <div class="logo-container">
+            <img class="logo" src="{{ asset('images/logo.png') }}">
+        </div>
+        <h1 class="reset-title">Password Reset Email Sent</h1>
+
+        <p class="centered-text">
+            If we found your email, we've sent a password reset link.
+            Check your inbox; it expires
+            in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+        </p>
+        <p class="centered-text">If you don't receive an email, please check your spam folder or <a
+                    href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+    </div>
+{% endblock %}
+
+

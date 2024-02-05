@@ -1,0 +1,311 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    {{ encore_entry_link_tags('style/profile') }}
+{% endblock %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block body %}
+    <div class="page-container-profile">
+        <div class="profile-card">
+
+            <div class="tooltip-container">
+                <i class="fa-solid fa-face-smile-beam"></i>
+                <span class="tooltip-text">Profile Pictures Coming Soon</span>
+            </div>
+
+            <div class="input-couple">
+                <label for="first-name" class="roofX-label">First Name</label>
+                <input id="first-name" class="roofX-input" value="{{ app.user.firstName }}" required>
+            </div>
+            <div class="input-couple">
+                <label for="last-name" class="roofX-label">Last Name</label>
+                <input id="last-name" class="roofX-input" value="{{ app.user.lastName }}" required>
+            </div>
+            <div class="input-couple">
+                <label for="email" class="roofX-label">Email</label>
+                <input id="email" class="roofX-input" value="{{ app.user.email }}" required>
+            </div>
+            <p class="error" id="error" hidden></p>
+
+            <button class="roofX-button" id="profile-save">Save</button>
+
+        </div>
+        <div class="company-card">
+            {% if app.user.company is null %}
+                <h2 class="company-card-title">Don't have a company?</h2>
+                <button class="roofX-button" id="create-company" data-toggle="modal" data-target="#createCompany">Create
+                    a Company
+                </button>
+                <h2> or </h2>
+                <button class="roofX-button" id="join-company" data-toggle="modal" data-target="#joinCompany">Join a
+                    Company
+                </button>
+            {% else %}
+                <div class="tooltip-container">
+                    <i class="fa-solid fa-building"></i>
+                    <span class="tooltip-text">Profile Pictures Coming Soon</span>
+                </div>
+                <input id="company-id-holder" hidden value="{{ company.id }}">
+
+                <div class="input-couple">
+                    <label for="company-share" class="roofX-label">Invite Code</label>
+                    <input id="company-share" style="border-style: dashed;" disabled class="roofX-input"
+                           value="{{ company.inviteCode }}">
+                </div>
+
+                <div class="input-couple">
+                    <label for="company-name-edit" class="roofX-label">Company Name</label>
+                    <input id="company-name-edit" {% if app.user != company.owner %} disabled {% endif %}
+                           class="roofX-input" value="{{ company.name }}" required>
+                </div>
+                <div class="input-couple">
+                    <label for="company-email-edit" class="roofX-label">Company Email</label>
+                    <input id="company-email-edit"
+                           class="roofX-input" {% if app.user != company.owner %} disabled {% endif %}
+                           value="{{ company.email }}" required>
+                </div>
+                <div class="input-couple">
+                    <label for="company-phone-edit" class="roofX-label">Company Phone</label>
+                    <input id="company-phone-edit"
+                           class="roofX-input" {% if app.user != company.owner %} disabled {% endif %}
+                           value="{{ company.phoneNumber }}" required>
+                </div>
+                <div class="input-couple">
+                    <label for="company-address-edit" class="roofX-label">Company Address</label>
+                    <input id="company-address-edit"
+                           class="roofX-input" {% if app.user != company.owner %} disabled {% endif %}
+                           value="{{ company.address }}" required>
+                </div>
+                <div class="input-couple">
+                    <label for="company-city-edit" class="roofX-label">Company City</label>
+                    <input id="company-city-edit"
+                           class="roofX-input" {% if app.user != company.owner %} disabled {% endif %}
+                           value="{{ company.city }}" required>
+                </div>
+                <div class="input-couple">
+                    <label for="company-state-edit" class="roofX-label">Company State</label>
+                    <select id="company-state-edit" {% if app.user != company.owner %} disabled {% endif %}
+                            class="roofX-input" required>
+                        <option {% if company.state == 'AL' %} selected {% endif %} value="AL">Alabama</option>
+                        <option {% if company.state == 'AK' %} selected {% endif %} value="AK">Alaska</option>
+                        <option {% if company.state == 'AZ' %} selected {% endif %} value="AZ">Arizona</option>
+                        <option {% if company.state == 'AR' %} selected {% endif %} value="AR">Arkansas</option>
+                        <option {% if company.state == 'CA' %} selected {% endif %} value="CA">California</option>
+                        <option {% if company.state == 'CO' %} selected {% endif %} value="CO">Colorado</option>
+                        <option {% if company.state == 'CT' %} selected {% endif %} value="CT">Connecticut</option>
+                        <option {% if company.state == 'DE' %} selected {% endif %} value="DE">Delaware</option>
+                        <option {% if company.state == 'DC' %} selected {% endif %} value="DC">District Of Columbia
+                        </option>
+                        <option {% if company.state == 'FL' %} selected {% endif %} value="FL">Florida</option>
+                        <option {% if company.state == 'GA' %} selected {% endif %} value="GA">Georgia</option>
+                        <option {% if company.state == 'HI' %} selected {% endif %} value="HI">Hawaii</option>
+                        <option {% if company.state == 'ID' %} selected {% endif %} value="ID">Idaho</option>
+                        <option {% if company.state == 'IL' %} selected {% endif %} value="IL">Illinois</option>
+                        <option {% if company.state == 'IN' %} selected {% endif %} value="IN">Indiana</option>
+                        <option {% if company.state == 'IA' %} selected {% endif %} value="IA">Iowa</option>
+                        <option {% if company.state == 'KS' %} selected {% endif %} value="KS">Kansas</option>
+                        <option {% if company.state == 'KY' %} selected {% endif %} value="KY">Kentucky</option>
+                        <option {% if company.state == 'LA' %} selected {% endif %} value="LA">Louisiana</option>
+                        <option {% if company.state == 'ME' %} selected {% endif %} value="ME">Maine</option>
+                        <option {% if company.state == 'MD' %} selected {% endif %} value="MD">Maryland</option>
+                        <option {% if company.state == 'MA' %} selected {% endif %} value="MA">Massachusetts</option>
+                        <option {% if company.state == 'MI' %} selected {% endif %} value="MI">Michigan</option>
+                        <option {% if company.state == 'MN' %} selected {% endif %} value="MN">Minnesota</option>
+                        <option {% if company.state == 'MS' %} selected {% endif %} value="MS">Mississippi</option>
+                        <option {% if company.state == 'MO' %} selected {% endif %} value="MO">Missouri</option>
+                        <option {% if company.state == 'MT' %} selected {% endif %} value="MT">Montana</option>
+                        <option {% if company.state == 'NE' %} selected {% endif %} value="NE">Nebraska</option>
+                        <option {% if company.state == 'NV' %} selected {% endif %} value="NV">Nevada</option>
+                        <option {% if company.state == 'NH' %} selected {% endif %} value="NH">New Hampshire</option>
+                        <option {% if company.state == 'NJ' %} selected {% endif %} value="NJ">New Jersey</option>
+                        <option {% if company.state == 'NM' %} selected {% endif %} value="NM">New Mexico</option>
+                        <option {% if company.state == 'NY' %} selected {% endif %} value="NY">New York</option>
+                        <option {% if company.state == 'NC' %} selected {% endif %} value="NC">North Carolina</option>
+                        <option {% if company.state == 'ND' %} selected {% endif %} value="ND">North Dakota</option>
+                        <option {% if company.state == 'OH' %} selected {% endif %} value="OH">Ohio</option>
+                        <option {% if company.state == 'OK' %} selected {% endif %} value="OK">Oklahoma</option>
+                        <option {% if company.state == 'OR' %} selected {% endif %} value="OR">Oregon</option>
+                        <option {% if company.state == 'PA' %} selected {% endif %} value="PA">Pennsylvania</option>
+                        <option {% if company.state == 'RI' %} selected {% endif %} value="RI">Rhode Island</option>
+                        <option {% if company.state == 'SC' %} selected {% endif %} value="SC">South Carolina</option>
+                        <option {% if company.state == 'SD' %} selected {% endif %} value="SD">South Dakota</option>
+                        <option {% if company.state == 'TN' %} selected {% endif %} value="TN">Tennessee</option>
+                        <option {% if company.state == 'TX' %} selected {% endif %} value="TX">Texas</option>
+                        <option {% if company.state == 'UT' %} selected {% endif %} value="UT">Utah</option>
+                        <option {% if company.state == 'VT' %} selected {% endif %} value="VT">Vermont</option>
+                        <option {% if company.state == 'VA' %} selected {% endif %} value="VA">Virginia</option>
+                        <option {% if company.state == 'WA' %} selected {% endif %} value="WA">Washington</option>
+                        <option {% if company.state == 'WV' %} selected {% endif %} value="WV">West Virginia</option>
+                        <option {% if company.state == 'WI' %} selected {% endif %} value="WI">Wisconsin</option>
+                        <option {% if company.state == 'WY' %} selected {% endif %} value="WY">Wyoming</option>
+                    </select>
+                </div>
+                <div class="input-couple">
+                    <label for="company-zip-edit" class="roofX-label">Company Zip</label>
+                    <input id="company-zip-edit" {% if app.user != company.owner %} disabled {% endif %}
+                           class="roofX-input" value="{{ company.zip }}" required>
+                </div>
+                <div class="input-couple">
+                    <label for="company-motto-edit" class="roofX-label">Company Motto</label>
+                    <input id="company-motto-edit" {% if app.user != company.owner %} disabled {% endif %}
+                           class="roofX-input" value="{{ company.motto }}" required>
+                </div>
+
+                {% if app.user == company.owner %}
+                    <button class="roofX-button" id="edit-company">Save</button>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block modal %}
+
+    <!-- Create Company Modal -->
+    <div class="modal fade" id="createCompany">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Create Company</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p class="required-text">* All input fields required</p>
+                    <label for="company-name" class="roofX-label">Company Name</label>
+                    <input id="company-name" class="roofX-input">
+                    <label for="company-email" class="roofX-label">Company Email</label>
+                    <input id="company-email" class="roofX-input">
+                    <label for="phone" class="roofX-label">Company Phone</label>
+                    <input class="roofX-input" type="text" id="phone" placeholder="123-456-7890">
+                    <label for="company-address" class="roofX-label">Company Address</label>
+                    <input id="company-address" class="roofX-input">
+                    <label for="company-city" class="roofX-label">Company City</label>
+                    <input id="company-city" class="roofX-input">
+                    <label for="company-state" class="roofX-label">Company State</label>
+                    <select id="company-state" class="roofX-input">
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                    <label for="company-zip" class="roofX-label">Company Zip Code</label>
+                    <input id="company-zip" class="roofX-input" placeholder="00000">
+                    <label for="company-motto" class="roofX-label">Company Motto</label>
+                    <input id="company-motto" class="roofX-input">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="submit-company" type="button" class="btn btn-success">Create</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Create Company Modal -->
+
+    <!-- Create Join Modal -->
+    <div class="modal fade" id="joinCompany">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Create Company</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5 style="padding-bottom: 10px">Request invite code from company creator and enter in below:</h5>
+                    <label for="company-code" class="roofX-label">Company Code</label>
+                    <input id="company-code" class="roofX-input" placeholder="Company Code">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="join-submit-company" type="button" class="btn btn-success">Join</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Join Company Modal -->
+
+{% endblock %}
+
+{% block scripts %}
+
+    {{ encore_entry_script_tags('js/profile') }}
+
+    <script>
+        $(document).ready(function () {
+            $('#phone').mask('000-000-0000');
+        });
+
+        $(document).ready(function () {
+            $('#company-phone-edit').mask('000-000-0000');
+        });
+
+        $(document).ready(function () {
+            $('#company-zip').mask('00000');
+        });
+    </script>
+
+
+{% endblock %}

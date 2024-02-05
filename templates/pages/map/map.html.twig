@@ -1,0 +1,65 @@
+{% block style %}
+
+    {{ encore_entry_link_tags('style/map') }}
+
+{% endblock %}
+
+{% block body %}
+    <div class="page-container">
+        <div class="top-left-box">
+            <div id="geocoder">
+                <strong><p>Click the map to draw a polygon</p></strong>
+                <input type="text" id="address" autocomplete="address-line1" placeholder="Search for an address" required>
+                <button id="search">Search</button>
+                <div class="area-container">
+                    <div id="calculated-area"></div>
+                </div>
+                <div class="perimeter-container">
+                    <div id="calculated-perimeter"></div>
+                </div>
+            </div>
+            <button id="complete-estimate">Complete Estimate</button>
+        </div>
+
+        <button id="goHome">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </button>
+        <div id="map"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.js"></script>
+
+    {{ encore_entry_script_tags('js/map') }}
+    <link
+            href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.4.0/mapbox-gl-draw.css"
+            type="text/css"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+
+    <script>
+        // Add the redirection script here
+        document.getElementById("goHome").addEventListener("click", function () {
+            window.location.href = "/";
+        });
+    </script>
+    <script
+            id="search-js"
+            defer
+            src="https://api.mapbox.com/search-js/v1.0.0-beta.17/web.js"
+    >
+    </script>
+
+
+{% endblock %}

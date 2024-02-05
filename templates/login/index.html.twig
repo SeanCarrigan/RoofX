@@ -1,0 +1,45 @@
+{# templates/login/index.html.twig #}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Roof X{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22> 🏠️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700&display=swap" rel="stylesheet">
+    {% block style %}
+        {{ encore_entry_link_tags('style/login') }}
+    {% endblock %}
+</head>
+
+
+{% block body %}
+    <div class="login-container">
+
+        <div class="logo-container">
+            <img class="logo" src="{{ asset('images/logo.png') }}">
+        </div>
+
+        <form action="{{ path('app_login') }}" method="post">
+            <div class="form-group">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="_username" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="submit" type="submit">Login</button>
+        </form>
+        <div class="form-group">
+            <a href="{{ path('app_forgot_password_request') }}"> Forgot Password?</a>
+        </div>
+
+        <div class="register">
+            <p>Don't have an account? <a href="{{ path('app_register') }}">Register here.</a></p>
+        </div>
+    </div>
+
+{% endblock %}
+

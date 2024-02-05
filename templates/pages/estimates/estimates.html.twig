@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block style %}
+    {{ encore_entry_link_tags('style/estimates') }}
+{% endblock %}
+
+{% block title %}Estimates
+{% endblock %}
+
+{% block body %}
+    <div class="page-container-estimates">
+        <div class="tools">
+            <div class="welcome-name">
+                <h1>Estimates</h1>
+            </div>
+            <div class="mini-control-panel">
+                <div class="tooltip-container">
+                    <button class="estimate-btn" {% if app.user.company is null %} onclick="location.href='{{ path('profile_page') }}'" {% else %} onclick="location.href='{{ path('map_page') }}'" {% endif %}>
+                        Create an Estimate <i class="fa-solid fa-plus"></i>
+                    </button>
+                    {% if app.user.company is null %}<span class="tooltip-text">Create or Join a Company in the profile tab before creating an estimate.</span>{% endif %}
+                </div>
+                <button class="notification" data-toggle="modal" data-target="#notifications"><i
+                            class="fa-solid fa-bell"></i><span class="badge">{{ notifications | length }}</span>
+                </button>
+            </div>
+        </div>
+        <div class="estimates">
+            {% for estimate in estimates %}
+                <div class="estimate-card col-3"
+                     onclick="window.location.href='{{ path('estimate_page', {'id': estimate.id}) }}'">
+                    <h4>{{ estimate.address }}</h4>
+                    <h6>Area: {{ estimate.area }} square feet</h6>
+                    <h6>Perimeter: {{ estimate.perimeter }} feet</h6>
+                    <h6>Date created: {{ estimate.dateCreated | date('Y-m-d') }}</h6>
+                    <h6>Estimate Creator: {{ estimate.creator.fullName }}</h6>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+{% block modal %}
+
+    <!-- Notifications Modal -->
+    <div class="modal fade" id="notifications">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Notifications</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    {% if notifications != null %}
+                        {% for notification in notifications %}
+                            <div class="notification-item">
+                                <p class="notification-item-text"><b>{{ notification.fromUser.fullName }}</b> wants to
+                                    join your company</p>
+                                <div class="tooltip-container">
+                                    <a class="notification-accept" data-request="{{ notification.id }}"
+                                       data-company="{{ notification.toUser.company.id }}"
+                                       data-user="{{ notification.fromUser.id }}"><i class="fa-solid fa-check"></i></a>
+                                    <span class="tooltip-text">Accept</span>
+                                </div>
+
+                                <div class="tooltip-container">
+                                    <a class="notification-reject" data-request="{{ notification.id }}"
+                                       data-company="{{ notification.toUser.company.id }}"
+                                       data-user="{{ notification.fromUser.id }}"><i class="fa-solid fa-x"></i></a>
+                                    <span class="tooltip-text">Reject</span>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    {% else %}
+                        <p style="text-align: center;">No notifications</p>
+                    {% endif %}
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Notifications Modal -->
+
+{% endblock %}
+
+
+{% block scripts %}
+
+    {{ encore_entry_script_tags('js/estimates') }}
+    {{ encore_entry_script_tags('js/home') }}
+
+{% endblock %}

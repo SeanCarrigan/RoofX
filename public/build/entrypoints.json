@@ -1,0 +1,159 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "js/home": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in-accessor_js-node_modules_core-js_inter-58e517.js",
+        "/build/vendors-node_modules_core-js_modules_es_promise_js.js",
+        "/build/vendors-node_modules_core-js_internals_create-iter-result-object_js-node_modules_core-js_inte-582fe0.js",
+        "/build/vendors-node_modules_core-js_internals_object-create_js-node_modules_core-js_modules_es_array-005cfc.js",
+        "/build/js/home.js"
+      ]
+    },
+    "js/map": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in-accessor_js-node_modules_core-js_inter-58e517.js",
+        "/build/vendors-node_modules_core-js_modules_es_promise_js.js",
+        "/build/vendors-node_modules_core-js_internals_create-iter-result-object_js-node_modules_core-js_inte-582fe0.js",
+        "/build/vendors-node_modules_core-js_internals_this-number-value_js-node_modules_core-js_modules_es_e-39c312.js",
+        "/build/vendors-node_modules_core-js_internals_array-method-has-species-support_js-node_modules_core--7adca5.js",
+        "/build/vendors-node_modules_core-js_modules_es_regexp_to-string_js-node_modules_core-js_modules_es_s-0fb5b8.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_concat_js-node_modules_core-js_modules_es_array-860e46.js",
+        "/build/js/map.js"
+      ]
+    },
+    "js/profile": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in-accessor_js-node_modules_core-js_inter-58e517.js",
+        "/build/vendors-node_modules_core-js_modules_es_promise_js.js",
+        "/build/js/profile.js"
+      ]
+    },
+    "js/estimates": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/estimates.js"
+      ]
+    },
+    "js/estimate": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in-accessor_js-node_modules_core-js_inter-58e517.js",
+        "/build/vendors-node_modules_core-js_modules_es_promise_js.js",
+        "/build/vendors-node_modules_core-js_internals_this-number-value_js-node_modules_core-js_modules_es_e-39c312.js",
+        "/build/vendors-node_modules_core-js_modules_es_date_to-string_js-node_modules_core-js_modules_es_num-b90bc8.js",
+        "/build/js/estimate.js"
+      ]
+    },
+    "js/graphs": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_core-js_internals_define-built-in-accessor_js-node_modules_core-js_inter-58e517.js",
+        "/build/vendors-node_modules_core-js_internals_create-iter-result-object_js-node_modules_core-js_inte-582fe0.js",
+        "/build/vendors-node_modules_core-js_internals_this-number-value_js-node_modules_core-js_modules_es_e-39c312.js",
+        "/build/vendors-node_modules_core-js_internals_array-method-has-species-support_js-node_modules_core--7adca5.js",
+        "/build/vendors-node_modules_core-js_modules_es_array_filter_js-node_modules_core-js_modules_es_array-06d9a0.js",
+        "/build/js/graphs.js"
+      ]
+    },
+    "style/RoofX": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/RoofX.css"
+      ]
+    },
+    "style/map": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/map.css"
+      ]
+    },
+    "style/login": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/login.css"
+      ]
+    },
+    "style/registration": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/registration.css"
+      ]
+    },
+    "style/profile": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/profile.css"
+      ]
+    },
+    "style/base": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/base.css"
+      ]
+    },
+    "style/components": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/components.css"
+      ]
+    },
+    "style/estimates": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/estimates.css"
+      ]
+    },
+    "style/estimate": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/estimate.css"
+      ]
+    },
+    "style/error_page": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/error_page.css"
+      ]
+    },
+    "style/reset": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/style/reset.css"
+      ]
+    }
+  }
+}

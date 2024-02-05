@@ -1,0 +1,99 @@
+
+
+.roofX-input {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Heebo', sans-serif;
+    &:focus {
+        outline: none;
+        border: 2px solid #eee;
+        box-shadow: 0 0 5px #eee;
+    }
+}
+
+.roofX-label {
+    font-size: 20px;
+    font-family: 'Heebo', sans-serif;
+    margin-bottom: 5px;
+    text-align: start;
+    align-content: flex-start;
+}
+
+.roofX-button {
+    background-color: #4c4c4c;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: 'Heebo', sans-serif;
+    &:hover {
+        background-color: #333;
+    }
+}
+
+.roofX-button-2 {
+    font-family: 'Heebo', sans-serif;
+    color: white;
+    font-size: 15px;
+    background: #264348;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+
+    &:hover {
+        background: #1a2b2e;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -60px; /* Use half the width to center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+//<div class="tooltip-container">
+//                              Hover over me
+//<span class="tooltip-text">Tooltip content here</span>
+//</div>
+
+
+
+.modal-backdrop {
+    z-index: 1040;
+}
+
+.modal {
+    z-index: 1050;
+
+}
