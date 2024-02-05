@@ -1,9 +1,9 @@
 # RoofX
 ## Energize your business!
 
-Sean Carrigan - Scarri28@uic.edu  Kacper Aniecko - Kanie2@uic.edu
+Sean Carrigan - sean.t.carrigan@gmail.com  Kacper Aniecko - Kanie2@uic.edu
 
-GitHub Repository Link -[ https://github.com/kaniecko/484-RoofX](https://github.com/SeanCarrigan/RoofX)
+GitHub Repository Link -[ https://github.com/SeanCarrigan/RoofX](https://github.com/SeanCarrigan/RoofX)
 
 Web Application Link - https://projectroofx.com/
 
